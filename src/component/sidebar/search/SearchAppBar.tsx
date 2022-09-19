@@ -14,15 +14,12 @@ const Search = styled("div")(({ theme }) => ({
   justifyContent: "space-between",
   flexWrap: "wrap",
   borderRadius: theme.shape.borderRadius,
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 1),
-  },
   marginRight: theme.spacing(2),
-  marginLeft: 0,
-  width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(3),
-    width: "auto",
+  marginLeft: theme.spacing(4),
+  width: "55%",
+  "& .Mui-focused": {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    boxShadow: theme.shadows[4],
   },
 }));
 
@@ -39,7 +36,6 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
 }));
 
 const CloseIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 30),
   height: "100%",
   position: "absolute",
   pointerEvents: "none",
@@ -48,27 +44,20 @@ const CloseIconWrapper = styled("div")(({ theme }) => ({
   justifyContent: "center",
   color: grey[500],
   zIndex: 3,
+  right: "12px",
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "darkslategray",
   backgroundColor: grey[200],
-  borderRadius: 5,
+  borderRadius: 10,
   alignSelf: "flex-start",
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-    boxShadow: theme.shadows[4],
-  },
-  "&:focus": {             //доделать при активации
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-    boxShadow: theme.shadows[4],
-  },
+  width: "100%",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1.5, 1, 1.5, 0),
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     paddingRight: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: '100%',
+    // transition: theme.transitions.create("width"),
   },
 }));
 
@@ -76,11 +65,20 @@ const DivWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   flexWrap: "wrap",
   alignItems: "center",
+  justifyContent: "space-between",
+  width: "80%",
+}));
+
+const DivSetting = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexWrap: "wrap",
+  alignItems: "center",
+  justifyContent: "space-between",
 }));
 
 const SearchAppBar = () => {
   return (
-    <DivWrapper sx={{ justifyContent: 'space-between' }}>
+    <DivWrapper>
       <Search>
         <SearchIconWrapper>
           <SearchIcon />
@@ -90,11 +88,13 @@ const SearchAppBar = () => {
           <CloseIcon sx={{ color: grey[500] }} />
         </CloseIconWrapper>
       </Search>
-      <DivWrapper>
-        <ReplayIcon sx={{ color: grey[500], transform: "rotate(45deg)" }} />
-        <GridViewOutlinedIcon sx={{ color: grey[500] }} />
+      <DivSetting>
+        <ReplayIcon
+          sx={{ color: grey[500], transform: "rotate(45deg)", mr: "20px" }}
+        />
+        <GridViewOutlinedIcon sx={{ color: grey[500], mr: "20px" }} />
         <SettingsOutlinedIcon sx={{ color: grey[500] }} />
-      </DivWrapper>
+      </DivSetting>
     </DivWrapper>
   );
 };
