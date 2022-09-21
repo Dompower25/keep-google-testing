@@ -13,7 +13,7 @@ const MenuMainBar = () => {
 
   return (
     <DivWrapper>
-      <IconButton edge="start" aria-label="menu" sx={{ mr: 1}}>
+      <IconButton edge="start" aria-label="menu" sx={{ mr: 1, pl: "13px"}}>
         <MenuRounded fontSize="medium" />
       </IconButton>
       <Avatar

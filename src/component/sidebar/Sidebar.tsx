@@ -6,7 +6,7 @@ import AccountBar from "./accountBar/AccountBar";
 
 export default function Sidebar() {
   return (
-    <AppBar sx={{ bgcolor: "inherit", boxShadow: 0 }}>
+    <AppBar sx={{ bgcolor: "inherit", boxShadow: 0, zIndex: "5000" }}>
       <Toolbar sx={{ justifyContent: "space-between" }}>
         <MenuMainBar />
         <SearchAppBar />
