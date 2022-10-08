@@ -5,7 +5,7 @@ import MenuRounded from "@mui/icons-material/MenuRounded";
 const MenuMainBar = () => {
   const DivWrapper = styled("div")(({ theme }) => ({
     display: "flex",
-    flexWrap: "wrap",
+    flexWrap: "nowrap",
     justifyContent: "center",
     alignSelf: "center",
     alignItems: "center",
@@ -13,7 +13,7 @@ const MenuMainBar = () => {
 
   return (
     <DivWrapper>
-      <IconButton edge="start" aria-label="menu" sx={{ mr: 1, pl: "13px"}}>
+      <IconButton edge="start" aria-label="menu" sx={{ marginRight: "10px"}}>
         <MenuRounded fontSize="medium" />
       </IconButton>
       <Avatar

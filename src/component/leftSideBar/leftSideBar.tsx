@@ -65,10 +65,10 @@ export default function MiniDrawer() {
 
   return (
     <Drawer
-      onClick={handleDrawerOpen}
       variant="permanent"
       open={open}
       sx={{
+        flexBasis: "2%",
         "& .MuiDrawer-paper": {
           top: "65px",
           boxShadow: open
@@ -78,7 +78,7 @@ export default function MiniDrawer() {
         },
       }}
     >
-      <List sx={{ pl: open ? 0 : "10px" }}>
+      <List sx={{ pl: open ? 0 : "10px" }} onClick={handleDrawerOpen}>
         {[
           { text: "Заметки", icon: <EmojiObjectsOutlinedIcon /> },
           { text: "Напоминания", icon: <NotificationsNoneSharpIcon /> },

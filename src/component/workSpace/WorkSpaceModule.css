@@ -1,0 +1,14 @@
+.workSpaceBox {
+  display: flex;
+  margin-top: 65px;
+  justify-content: "space-between";
+  padding: 30px;
+}
+
+.noteAria {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}

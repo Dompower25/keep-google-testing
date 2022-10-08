@@ -6,7 +6,7 @@ import { Avatar } from "@mui/material";
 
 const DivWrapper = styled("div")(({ theme }) => ({
   display: "flex",
-  flexWrap: "wrap",
+  flexWrap: "nowrap",
   alignItems: "center",
 }));
 

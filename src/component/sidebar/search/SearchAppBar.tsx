@@ -2,7 +2,7 @@ import React from "react";
 import { styled, alpha } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
-import { InputBase, Box } from "@mui/material";
+import { InputBase } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import ReplayIcon from "@mui/icons-material/Replay";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
@@ -57,7 +57,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     padding: theme.spacing(1.5, 1, 1.5, 0),
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     paddingRight: `calc(1em + ${theme.spacing(4)})`,
-    // transition: theme.transitions.create("width"),
   },
 }));
 
