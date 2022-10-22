@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, IconButton, InputBase, Typography } from "@mui/material";
+import { Button, IconButton, InputBase, Tooltip } from "@mui/material";
 import { alpha, styled } from "@mui/material/styles";
 import { grey } from "@mui/material/colors";
 import NotificationAddOutlinedIcon from "@mui/icons-material/NotificationAddOutlined";
@@ -69,9 +69,11 @@ const Notes = () => {
           }}
         >
           <Box>{notesHeaderText}</Box>
-          <IconButton>
-            <AttachFileIcon fontSize="medium" />
-          </IconButton>
+          <Tooltip title="Закрепить заметку">
+            <IconButton>
+              <AttachFileIcon fontSize="small" />
+            </IconButton>
+          </Tooltip>
         </Box>
         <Box sx={{ padding: "0 15px" }}>{notesText}</Box>
         <Box
@@ -84,34 +86,46 @@ const Notes = () => {
           }}
         >
           <CastomSpan>
-            <IconButton>
-              <NotificationAddOutlinedIcon fontSize="small" />
-            </IconButton>
+            <Tooltip title="Сохранить напоминание">
+              <IconButton>
+                <NotificationAddOutlinedIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
           </CastomSpan>
           <CastomSpan>
-            <IconButton>
-              <PersonAddAltOutlinedIcon fontSize="small" />
-            </IconButton>
+            <Tooltip title="Соавторы">
+              <IconButton>
+                <PersonAddAltOutlinedIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
           </CastomSpan>
           <CastomSpan>
-            <IconButton>
-              <ColorLensOutlinedIcon fontSize="small" />
-            </IconButton>
+            <Tooltip title="Параметры фона">
+              <IconButton>
+                <ColorLensOutlinedIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
           </CastomSpan>
           <CastomSpan>
-            <IconButton>
-              <PhotoOutlinedIcon fontSize="small" />
-            </IconButton>
+            <Tooltip title="Добавить картинку">
+              <IconButton>
+                <PhotoOutlinedIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
           </CastomSpan>
           <CastomSpan>
-            <IconButton>
-              <ArchiveOutlinedIcon fontSize="small" />
-            </IconButton>
+            <Tooltip title="Архивировать">
+              <IconButton>
+                <ArchiveOutlinedIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
           </CastomSpan>
           <CastomSpan>
-            <IconButton>
-              <MoreVertIcon fontSize="small" />
-            </IconButton>
+            <Tooltip title="Еще">
+              <IconButton>
+                <MoreVertIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
           </CastomSpan>
         </Box>
       </StyledNote>

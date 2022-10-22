@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { alpha, styled } from "@mui/material/styles";
-import { IconButton, Typography } from "@mui/material";
+import { IconButton, Tooltip, Typography } from "@mui/material";
 import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 import BrushIcon from "@mui/icons-material/Brush";
 import PhotoOutlinedIcon from "@mui/icons-material/PhotoOutlined";
@@ -63,15 +63,21 @@ const NoteCreatingBar = () => {
             Заметка...
           </Typography>
           <Box>
-            <IconButton sx={{ margin: "0 10px" }}>
-              <CheckBoxOutlinedIcon />
-            </IconButton>
-            <IconButton sx={{ margin: "0 10px" }}>
-              <BrushIcon />
-            </IconButton>
-            <IconButton>
-              <PhotoOutlinedIcon />
-            </IconButton>
+            <Tooltip title="Создать список">
+              <IconButton sx={{ margin: "0 10px" }}>
+                <CheckBoxOutlinedIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Создать заметку с рисунком">
+              <IconButton sx={{ margin: "0 10px" }}>
+                <BrushIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Создать фотозаметку">
+              <IconButton>
+                <PhotoOutlinedIcon />
+              </IconButton>
+            </Tooltip>
           </Box>
         </StyledInputBase>
       )}
