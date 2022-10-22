@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { FC } from "react";
 import { styled, Theme, CSSObject } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -52,33 +52,29 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function MiniDrawer() {
-  const [open, setOpen] = React.useState(false);
+interface ILeftSideBar {
+  toggleOpen: boolean;
+}
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+const LeftSideBar: FC<ILeftSideBar> = ({ toggleOpen }) => {
+  //opening state for hover left menu bar
 
   return (
     <Drawer
       variant="permanent"
-      open={open}
+      open={toggleOpen}
       sx={{
         flexBasis: "2%",
         "& .MuiDrawer-paper": {
           top: "65px",
-          boxShadow: open
+          boxShadow: toggleOpen
             ? "1px 1px 4px rgb(0 0 0 / 10%), 2px 5px 3px rgb(0 0 0 / 7%)"
             : "none",
           border: "none",
         },
       }}
     >
-      <List sx={{ pl: open ? 0 : "10px" }} onClick={handleDrawerOpen}>
+      <List sx={{ pl: toggleOpen ? 0 : "10px" }}>
         {[
           { text: "Заметки", icon: <EmojiObjectsOutlinedIcon /> },
           { text: "Напоминания", icon: <NotificationsNoneSharpIcon /> },
@@ -94,12 +90,12 @@ export default function MiniDrawer() {
               sx={{
                 height: "48px",
                 pr: "0px",
-                pl: open ? "-1px" : "5px",
+                pl: toggleOpen ? "-1px" : "5px",
                 "&:hover": {
-                  borderRadius: open ? "0 25px 25px 0" : "25px",
+                  borderRadius: toggleOpen ? "0 25px 25px 0" : "25px",
                 },
                 "&:focus": {
-                  borderRadius: open ? "0 25px 25px 0" : "50%",
+                  borderRadius: toggleOpen ? "0 25px 25px 0" : "50%",
                   backgroundColor: "#feefc3",
                 },
               }}
@@ -107,12 +103,12 @@ export default function MiniDrawer() {
               <ListItemIcon
                 sx={{
                   pl: "10px",
-                  mr: open ? "3px" : "auto",
+                  mr: toggleOpen ? "3px" : "auto",
                 }}
               >
                 {item.icon}
               </ListItemIcon>
-              <Typography sx={{ opacity: open ? 1 : "auto" }}>
+              <Typography sx={{ opacity: toggleOpen ? 1 : "auto" }}>
                 {item.text}
               </Typography>
             </ListItemButton>
@@ -121,4 +117,6 @@ export default function MiniDrawer() {
       </List>
     </Drawer>
   );
-}
+};
+
+export default LeftSideBar;

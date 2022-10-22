@@ -1,8 +1,12 @@
-import React from "react";
-import { IconButton, Avatar, Typography, styled } from "@mui/material";
+import React, { FC } from "react";
+import { IconButton, Avatar, Typography, styled, Tooltip } from "@mui/material";
 import MenuRounded from "@mui/icons-material/MenuRounded";
 
-const MenuMainBar = () => {
+interface IMenuMainBar {
+  toggleOpenLeftMenuBar: () => void;
+}
+
+const MenuMainBar: FC<IMenuMainBar> = ({ toggleOpenLeftMenuBar }) => {
   const DivWrapper = styled("div")(({ theme }) => ({
     display: "flex",
     flexWrap: "nowrap",
@@ -13,9 +17,16 @@ const MenuMainBar = () => {
 
   return (
     <DivWrapper>
-      <IconButton edge="start" aria-label="menu" sx={{ marginRight: "10px"}}>
-        <MenuRounded fontSize="medium" />
-      </IconButton>
+      <Tooltip  title="Главное меню">
+        <IconButton
+          onClick={toggleOpenLeftMenuBar}
+          edge="start"
+          aria-label="menu"
+          sx={{ marginRight: "10px" }}
+        >
+          <MenuRounded fontSize="medium" />
+        </IconButton>
+      </Tooltip>
       <Avatar
         alt="Logo"
         src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png"

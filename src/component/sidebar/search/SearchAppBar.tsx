@@ -2,7 +2,7 @@ import React from "react";
 import { styled, alpha } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
-import { InputBase } from "@mui/material";
+import { IconButton, InputBase, Tooltip } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import ReplayIcon from "@mui/icons-material/Replay";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
@@ -88,11 +88,21 @@ const SearchAppBar = () => {
         </CloseIconWrapper>
       </Search>
       <DivSetting>
-        <ReplayIcon
-          sx={{ color: grey[500], transform: "rotate(45deg)", mr: "20px" }}
-        />
-        <GridViewOutlinedIcon sx={{ color: grey[500], mr: "20px" }} />
-        <SettingsOutlinedIcon sx={{ color: grey[500] }} />
+        <Tooltip title="Обновить">
+          <IconButton sx={{ margin: "0 10px" }}>
+            <ReplayIcon sx={{ color: grey[500], transform: "rotate(45deg)" }} />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Список">
+          <IconButton sx={{ margin: "0 10px" }}>
+            <GridViewOutlinedIcon sx={{ color: grey[500] }} />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Настройки">
+          <IconButton sx={{ margin: "0 10px" }}>
+            <SettingsOutlinedIcon sx={{ color: grey[500] }} />
+          </IconButton>
+        </Tooltip>
       </DivSetting>
     </DivWrapper>
   );

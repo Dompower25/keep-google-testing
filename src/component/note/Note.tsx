@@ -15,7 +15,7 @@ import { Box } from "@mui/system";
 import { getByPlaceholderText } from "@testing-library/react";
 
 const StyledNote = styled("div")(({ theme }) => ({
-  padding: "2px 5px 2px 5px",
+  padding: "12px 2px 0 0",
   boxSizing: "border-box",
   outline: "none",
   whiteSpace: "pre-wrap",
@@ -37,7 +37,6 @@ const StyledNote = styled("div")(({ theme }) => ({
 
 const CastomSpan = styled("span")(() => ({
   paddingRight: "14px",
-
 }));
 
 const CreatingNoteInput = styled(InputBase)(({ theme }) => ({
@@ -50,14 +49,12 @@ const CreatingNoteInput = styled(InputBase)(({ theme }) => ({
 
 const Notes = () => {
   const [notesText, setNotesText] = useState("notesText text");
-  const [notesHeaderText, setNotesHeaderText] = useState(
-    "notesHeaderText text"
-  );
+  const [notesHeaderText, setNotesHeaderText] = useState("notesHeaderText");
 
   return (
     <Box
       sx={{
-        margin: "10px 0",
+        margin: "8px 0",
         alignSelf: "center",
         minWidth: "600px",
       }}
@@ -68,15 +65,15 @@ const Notes = () => {
           sx={{
             display: "flex",
             justifyContent: "space-between",
-
+            padding: "0 5px 0 15px ",
           }}
         >
-          <span>{notesHeaderText}</span>
+          <Box>{notesHeaderText}</Box>
           <IconButton>
-            <AttachFileIcon fontSize="medium" sx={{ padding: "0px 4px" }} />
+            <AttachFileIcon fontSize="medium" />
           </IconButton>
         </Box>
-        <span>{notesText}</span>
+        <Box sx={{ padding: "0 15px" }}>{notesText}</Box>
         <Box
           sx={{
             display: "flex",
