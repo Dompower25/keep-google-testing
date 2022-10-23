@@ -83,9 +83,6 @@ const SearchAppBar = () => {
           <SearchIcon />
         </SearchIconWrapper>
         <StyledInputBase placeholder="Поиск" />
-        <CloseIconWrapper>
-          <CloseIcon sx={{ color: grey[500] }} />
-        </CloseIconWrapper>
       </Search>
       <DivSetting>
         <Tooltip title="Обновить">

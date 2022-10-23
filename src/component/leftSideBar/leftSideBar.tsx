@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { styled, Theme, CSSObject } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -58,44 +58,66 @@ interface ILeftSideBar {
 
 const LeftSideBar: FC<ILeftSideBar> = ({ toggleOpen }) => {
   //opening state for hover left menu bar
+  const [hoverOpenMenu, setHoverOpenMenu] = useState(false);
 
   return (
     <Drawer
       variant="permanent"
-      open={toggleOpen}
+      open={hoverOpenMenu || toggleOpen}
+      onMouseEnter={() => {
+        setHoverOpenMenu(true);
+      }}
+      onMouseLeave={() => {
+        setHoverOpenMenu(false);
+      }}
       sx={{
         flexBasis: "2%",
         "& .MuiDrawer-paper": {
           top: "65px",
-          boxShadow: toggleOpen
+          boxShadow: hoverOpenMenu
             ? "1px 1px 4px rgb(0 0 0 / 10%), 2px 5px 3px rgb(0 0 0 / 7%)"
             : "none",
           border: "none",
         },
       }}
     >
-      <List sx={{ pl: toggleOpen ? 0 : "10px" }}>
+      <List sx={{ pl: toggleOpen || hoverOpenMenu ? 0 : "10px" }}>
         {[
-          { text: "Заметки", icon: <EmojiObjectsOutlinedIcon /> },
-          { text: "Напоминания", icon: <NotificationsNoneSharpIcon /> },
+          {
+            text: "Заметки",
+            icon: <EmojiObjectsOutlinedIcon />,
+            page: "/notes",
+          },
+          {
+            text: "Напоминания",
+            icon: <NotificationsNoneSharpIcon />,
+            page: "/reminders",
+          },
           {
             text: "Изменение ярлыков",
             icon: <ModeEditOutlineOutlinedIcon />,
+            page: "",
           },
-          { text: "Архив", icon: <ArchiveOutlinedIcon /> },
-          { text: "Корзина", icon: <DeleteOutlineOutlinedIcon /> },
+          { text: "Архив", icon: <ArchiveOutlinedIcon />, page: "/archive" },
+          {
+            text: "Корзина",
+            icon: <DeleteOutlineOutlinedIcon />,
+            page: "/trash",
+          },
         ].map((item, index) => (
-          <ListItem key={index} sx={{ pt: "0", pb: "0", pr: "0", pl: "0" }}>
+          <ListItem key={index} sx={{ padding: 0 }}>
             <ListItemButton
               sx={{
                 height: "48px",
                 pr: "0px",
-                pl: toggleOpen ? "-1px" : "5px",
+                pl: toggleOpen || hoverOpenMenu ? "-1px" : "5px",
                 "&:hover": {
-                  borderRadius: toggleOpen ? "0 25px 25px 0" : "25px",
+                  borderRadius:
+                    toggleOpen || hoverOpenMenu ? "0 25px 25px 0" : "25px",
                 },
                 "&:focus": {
-                  borderRadius: toggleOpen ? "0 25px 25px 0" : "50%",
+                  borderRadius:
+                    toggleOpen || hoverOpenMenu ? "0 25px 25px 0" : "50%",
                   backgroundColor: "#feefc3",
                 },
               }}
@@ -103,12 +125,13 @@ const LeftSideBar: FC<ILeftSideBar> = ({ toggleOpen }) => {
               <ListItemIcon
                 sx={{
                   pl: "10px",
-                  mr: toggleOpen ? "3px" : "auto",
                 }}
               >
                 {item.icon}
               </ListItemIcon>
-              <Typography sx={{ opacity: toggleOpen ? 1 : "auto" }}>
+              <Typography
+                sx={{ opacity: toggleOpen || hoverOpenMenu ? 1 : "auto" }}
+              >
                 {item.text}
               </Typography>
             </ListItemButton>
