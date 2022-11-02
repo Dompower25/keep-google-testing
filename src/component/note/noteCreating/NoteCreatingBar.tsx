@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { alpha, styled } from "@mui/material/styles";
 import { IconButton, Tooltip, Typography } from "@mui/material";
 import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
@@ -37,19 +37,20 @@ const StyledInputBase = styled("div")(({ theme }) => ({
 const NoteCreatingBar = () => {
   const [openWindowCreatingNote, setOpenWindowCreatingNote] = useState(false);
 
-  const openWindow = () => {
-    if (openWindowCreatingNote === false) {
-      setOpenWindowCreatingNote(true);
-    }
-  };
+  const toggleOpenCreationNote = useCallback(() => {
+    setOpenWindowCreatingNote(
+      (openWindowCreatingNote) => !openWindowCreatingNote
+    );
+  }, []);
 
   return (
-    <CreatingNoteInput onClick={openWindow}>
+    <CreatingNoteInput>
       {openWindowCreatingNote ? (
-        <OpenCreatingNoteBar />
+        <OpenCreatingNoteBar toggleOpenCreationNote={toggleOpenCreationNote} />
       ) : (
         <StyledInputBase>
           <Typography
+            onClick={toggleOpenCreationNote}
             mt={0.6}
             sx={{
               fontSize: "15px",

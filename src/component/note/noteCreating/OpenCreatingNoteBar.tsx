@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { Button, IconButton, InputBase, Typography } from "@mui/material";
 import { alpha, styled } from "@mui/material/styles";
 import { grey } from "@mui/material/colors";
@@ -41,7 +41,14 @@ const CreatingNoteInput = styled(InputBase)(({ theme }) => ({
   width: "37%",
 }));
 
-const OpenCreatingNoteBar = () => {
+interface IOpenCreatingNoteBar {
+  toggleOpenCreationNote: () => void;
+}
+
+const OpenCreatingNoteBar: FC<IOpenCreatingNoteBar> = ({
+  toggleOpenCreationNote,
+}) => {
+
   return (
     <StyledInputBase>
       <Box
@@ -88,6 +95,7 @@ const OpenCreatingNoteBar = () => {
         </IconButton>
         <Box
           sx={{ flexBasis: "30%", display: "flex", justifyContent: "flex-end" }}
+          onClick={toggleOpenCreationNote}
         >
           <Button
             variant="text"

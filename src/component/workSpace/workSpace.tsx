@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import "../workSpace/WorkSpaceModule.css";
 import LeftSideBar from "../leftSideBar/leftSideBar";
-import NoteCreatingBar from "../note/NoteCreatingBar";
+import NoteCreatingBar from "../note/noteCreating/NoteCreatingBar";
 import Note from "../note/Note";
 import { Box } from "@mui/system";
 
